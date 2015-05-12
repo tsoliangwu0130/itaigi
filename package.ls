@@ -1,4 +1,4 @@
-name: 'g0v-taigi'
+name: 'taigi-neologism'
 version: '0.0.1'
 authors:
   * 'Pomin Wu (pm5) <pomin5@gmail.com>'
@@ -11,6 +11,7 @@ scripts:
   start: 'NODE_ENV=production gulp app'
 private: true
 dependencies:
+  "LiveScript": "^1.3.0"
   "bower": "^1.3.12"
   "connect-livereload": "^0.5.2"
   "events": "^1.0.2"
@@ -23,8 +24,9 @@ dependencies:
   "gulp-filter": "^1.0.2"
   "gulp-livereload": "^2.1.1"
   "gulp-livescript": "^2.3.0"
-  "gulp-uglify": "^1.0.2"
+  "gulp-replace": "^0.5.3"
   "gulp-stylus": "^2.0.0"
+  "gulp-uglify": "^1.0.2"
   "liveify": "^1.3.1"
   "main-bower-files": "^2.4.1"
   "react": "~0.12.1"
