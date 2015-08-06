@@ -9,6 +9,9 @@
 	</head>
 
 	<body>
+               <div id='root' style="margin: 10px; padding: 10px; border: 1px solid black; display: block; float: left"></div><script src="build/bundle.js"></script>
+               <hr>
+
 		<div ng-app="app">
 		<div ng-controller="IntroController">
 		<p>{{ info | json}}</p>
@@ -19,7 +22,7 @@
 				ng-click='searchList()'/>
 				<br/>
 			使用者編號：{{user_id}}
-			<a href='/accounts/facebook/login?next=/api' ng-if='user_id=="無登入"'>登入</a>
+			<a href='http://localhost:8000/accounts/facebook/login?next=/api' ng-if='user_id=="無登入"'>登入</a>
 			<form method='post' action='/accounts/logout/?next=/api' ng-if='user_id!="無登入"'>
 			<input type='hidden' name='csrfmiddlewaretoken' value='{{csrftoken}}' />
 				<input type='submit' value='登出'>
@@ -56,12 +59,26 @@
 								屬性內容：{{questionContent['詳細']["屬性內容"]}}<br/>
 								外語語言：{{questionContent["外語語言"]}}<br/>
 								外語資料：{{questionContent["外語資料"]}}<br/>
+  <h2>Recordings</h2>
+								<audio id='audio' src="" controls=""></audio>
+								<a id='audio_a' download="" href=""></a>
+							  <button ng-click="startRecording(this);" ng-class='{disableBtn:recoding}'>record</button>
+							  <button ng-click="stopRecording(this);" ng-class='{disableBtn:!recoding}'>stop</button>
+							  
+  <ul id="recordingslist"></ul>
+  
+								<input type='button' ng-click='addVoiceSuggestion(questionContent["外語請教條項目編號"],
+									questionContent["詳細"]["種類"])' value='送新詞影音 by formdata'/>
+								
 								<input type='text' ng-model='textSuggestion' placeholder="建議文本"/>
 								<input type='button' ng-click='addTextSuggestion(questionContent["外語請教條項目編號"],
 									questionContent["詳細"]["種類"],textSuggestion)'/>
 				<ul>
 							<li ng-repeat='video in questionContent["新詞影音"]'>
-									<input type='button' ng-click=''/></li>
+								(angular 的audio好像有問題 <a href='http://stackoverflow.com/questions/15485768/changing-html5s-source-src-attribute-takes-no-effect-wtih-angularjs'>link</a>，下載正常)
+									<audio ng-src="{{ video['影音資料網址'] }}" controls='true' ></audio>
+								<a download="audio.wav" href="{{ video['影音資料網址']}}">下載</a>
+							</li>
 				</ul>
 				<ul>
 							<li ng-repeat='textContent in questionContent["新詞文本"]'>
@@ -74,6 +91,12 @@
 				</ul>
 			</div>
 		 </div>
+		 
+		 
+
+<!-- https://github.com/mattdiamond/Recorderjs  -->
+  <script src="recorder.js"></script>
+		 
 		 
 	 </body>
 

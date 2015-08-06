@@ -54,13 +54,10 @@ Start development server:
 
 ## Backend
 
-The backend runs on Python 2.x.
+The backend runs on Python 3.3+ and is maintained in another repository:
+<https://github.com/sih4sing5hong5/tai5-uan5_gian5-gi2_phing5-thai5>
 
-        $ cd server-side
-        $ pip install -r packages
-        $ python create_database.py
-        $ python server.py
-        # check out <http://0.0.0.0:8001/api/suggestions/%E8%A6%81%E8%A1%9D>
+[API介面](http://docs.tai5uan5gian5gi2phing5thai5.apiary.io/#)
 
 Development
 -----------
